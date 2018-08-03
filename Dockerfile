@@ -5,8 +5,6 @@ LABEL version="1.0"
 
 WORKDIR /var/www
 
-RUN npm install
-
 EXPOSE 3000
 
-CMD [ "npm", "start" ]
+CMD [ "./build-node.sh" ]
