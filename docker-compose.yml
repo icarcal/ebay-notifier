@@ -1,0 +1,36 @@
+version: '3'
+
+services:
+  mongodb:
+    container_name: ebay-notifier-mongodb
+    image: mongo:latest
+    volumes:
+      - ./docker-config/database:/data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: secret
+    ports:
+      - "27017:27017"
+
+  # mailcatcher:
+  #   container_name: ebay-notifier-mailcatcher
+  #   image: schickling/mailcatcher
+  #   ports:
+  #     - "1080:1080"
+  #     - "1025:1025"
+
+  node:
+    depends_on:
+      - mongodb
+      # - mailcatcher
+    container_name: ebay-notifier-node
+    build:
+       context: ./
+    image: ebay-notifier-node:1.0
+    volumes:
+      - "./:/var/www"
+    links:
+      - "mongodb:mongodb"
+      # - "mailcatcher:mailcatcher"
+    ports:
+      - "3000:3000"
