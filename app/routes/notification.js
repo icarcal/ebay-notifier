@@ -15,10 +15,21 @@ router.get('/:id', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-  const { params } = req;
+  const { email, frequency, term } = req.body;
 
-  Notification.create({ ...params }).then(() => {
+
+  const notificationData = {
+    email,
+    notifications: [{
+      term,
+      frequency,
+    }],
+  };
+
+  Notification.create(notificationData).then(() => {
     res.sendStatus(201);
+  }).catch((err) => {
+    res.sendStatus(422);
   });
 });
 

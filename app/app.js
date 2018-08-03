@@ -6,8 +6,10 @@ const mongoose = require('mongoose');
 const router = require('./router');
 require('dotenv').config();
 
-mongoose.connect(`mongodb://${process.env.DB_HOST}:${process.env.DB_PORT}/ebay-notifier`, {
-  useNewUrlParser: true
+mongoose.connect(`mongodb://${process.env.DB_HOST}:${process.env.DB_PORT}/ebay-notifier?authSource=admin`, {
+  useNewUrlParser: true,
+  user: process.env.DB_USER,
+  pass: process.env.DB_PASS,
 });
 
 const db = mongoose.connection;
