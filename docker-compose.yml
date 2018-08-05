@@ -12,17 +12,24 @@ services:
     ports:
       - "27017:27017"
 
-  # mailcatcher:
-  #   container_name: ebay-notifier-mailcatcher
-  #   image: schickling/mailcatcher
-  #   ports:
-  #     - "1080:1080"
-  #     - "1025:1025"
+  mailcatcher:
+    container_name: ebay-notifier-mailcatcher
+    image: schickling/mailcatcher
+    ports:
+      - "1080:1080"
+      - "1025:1025"
+
+  redis:
+    container_name: ebay-notifier-redis
+    image: redis:latest
+    ports:
+      - "6379:6379"
 
   node:
     depends_on:
       - mongodb
-      # - mailcatcher
+      - mailcatcher
+      - redis
     container_name: ebay-notifier-node
     build:
        context: ./
@@ -31,6 +38,7 @@ services:
       - "./:/var/www"
     links:
       - "mongodb:mongodb"
-      # - "mailcatcher:mailcatcher"
+      - "mailcatcher:mailcatcher"
+      - "redis:redis"
     ports:
       - "3000:3000"
