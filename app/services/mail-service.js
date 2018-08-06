@@ -13,7 +13,7 @@ class MailService {
     });
 
     this.mailOptions = {
-      from: '"Ebay Nofifier @ Icaro" <icaro.caldeira@hotmail.com>',
+      from: '"Ebay Nofifier @ Email" <email@email.com>',
       subject: 'Hey! Here is your alert',
       layout: '<h1>Hey!</h1>',
     }
