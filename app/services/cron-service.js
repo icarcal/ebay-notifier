@@ -22,7 +22,8 @@ class CronService {
 
       this.mailService.send({
         to: alert.email,
-        layout
+        subject: `Hey, here is your ebay alert for the keyword ${alert.term}`,
+        layout,
       });
     });
   }

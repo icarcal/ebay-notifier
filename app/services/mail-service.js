@@ -25,7 +25,7 @@ class MailService {
       callback(this.message, null);
     }
 
-    this.mailOptions.subject = this.mailOptions || subject;
+    this.mailOptions.subject = subject || this.mailOptions;
     this.mailOptions.to = to;
     this.mailOptions.html = layout;
 

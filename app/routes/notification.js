@@ -33,8 +33,9 @@ router.post('/', async (req, res) => {
     return res.json({ errors: [`Frequency can only be ${minutesAllowed.join(', ')}`] });
   }
 
-  Alert.create({ ...req.body }).then(() => {
-    res.sendStatus(201);
+  Alert.create({ ...req.body }).then((alert) => {
+    res.status(201);
+    res.json({ _id: alert._id });
   }).catch((err) => {
     const errors = errorHandler(err);
 
