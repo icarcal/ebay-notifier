@@ -35,7 +35,7 @@ router.post('/', async (req, res) => {
 
   Alert.create({ ...req.body }).then((alert) => {
     res.status(201);
-    res.json({ _id: alert._id });
+    res.json({ alert });
   }).catch((err) => {
     const errors = errorHandler(err);
 
@@ -61,19 +61,22 @@ router.put('/:id', async (req, res) => {
 
   try {
     alert = await alert.save();
+    res.status(200);
+    return res.json({ alert });
   } catch (error) {
     res.status(400);
     return res.json({ error });
   }
-
-  return res.sendStatus(200);
 });
 
 router.delete('/:id', async (req, res) => {
   const { id } = req.params;
 
   Alert.deleteOne({ _id: id }).then((data) => {
-    res.json({ message: 'Notification successfully deleted' });
+    res.json({
+      _id: id,
+      message: 'Notification successfully deleted'
+    });
   }).catch((err) => {
     res.status(400);
     res.json({ message: err });
