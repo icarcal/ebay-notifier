@@ -28,8 +28,9 @@ If you want to test the backend via postman, get the collection [here](https://r
   - [Node Mailer](https://nodemailer.com/about/) for sending emails
   - [Node Cron](https://github.com/merencia/node-cron) for the cron scheduling
 - [React](https://reactjs.org/) for the frontend
+- [MongoDB](https://docs.mongodb.com/) as database
 - [MailCatcher](https://mailcatcher.me/) as SMTP server
-- [Redis](https://redis.io/) for cache
+- [Redis](https://redis.io/) as cache
 
 Unfortunatelly I was unable to create any test, due to the deadline ☹️
 
