@@ -25,6 +25,8 @@ docker-compose -d --build
 
 After that, the API will be available at [http://localhost:3001](http://localhost:3001) and the web interface will be available at [http://localhost:3000](http://localhost:3000)
 
+PS.: For any reason the `MongoDB` container is taking way too long to start, if that happens, please restart the `ebay-notifier-node-back-end` container
+
 ## Postman
 
 If you want to test the backend via postman, get the collection [here](https://raw.githubusercontent.com/icarcal/ebay-notifier/master/ebay-notifier.postman_collection)

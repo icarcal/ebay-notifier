@@ -18,9 +18,11 @@ mongoose.connect(`mongodb://${process.env.DB_HOST}:${process.env.DB_PORT}/ebay-n
 
 if (process.env.APP_ENVIROMENT !== 'production') {
   const db = mongoose.connection;
-  db.on('error', () => { console.error('Database is not connected') });
-  db.once('open', () => { console.error('Connection ok') });
-}
+  db.on('error', (err) => { console.error(`Database is not connected ${err}`) });
+  db.once('open', () => { console.log('Database connection ok') });
+  db.on('reconnected', () => { console.log('Database reconnected') });
+};
+
 
 const redisClient = redis.createClient({
   host: process.env.REDIS_HOST,
