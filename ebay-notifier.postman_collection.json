@@ -1,0 +1,163 @@
+{
+	"info": {
+		"_postman_id": "021fc7df-33db-4610-a76b-a8c801d48030",
+		"name": "ebay-notifier",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create a notification",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email",
+							"value": "email@email.com",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "frequency",
+							"value": "2",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "term",
+							"value": "rock",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:3000/notification/",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"notification",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find a single notification",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "localhost:3000/notification/5b668743df23d5ea2a9bd03a",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"notification",
+						"5b668743df23d5ea2a9bd03a"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find all notifications",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "localhost:3000/notification/",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"notification",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete a single notification",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "localhost:3000/notification/5b668722df23d5ea2a9bd039",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"notification",
+						"5b668722df23d5ea2a9bd039"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update a notification",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email",
+							"value": "icaro.caldeira@hotmail.com",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "frequency",
+							"value": "2",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "term",
+							"value": "rocking",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:3000/notification/5b668743df23d5ea2a9bd03a",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"notification",
+						"5b668743df23d5ea2a9bd03a"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
