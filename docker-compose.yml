@@ -25,20 +25,32 @@ services:
     ports:
       - "6379:6379"
 
-  node:
+  node-back:
     depends_on:
       - mongodb
       - mailcatcher
       - redis
-    container_name: ebay-notifier-node
+    container_name: ebay-notifier-node-back
     build:
-       context: ./
-    image: ebay-notifier-node:1.1
+       context: ./app
+    image: ebay-notifier-node:1.0
     volumes:
-      - "./:/var/www"
+      - "./app:/var/www/app"
     links:
       - "mongodb:mongodb"
       - "mailcatcher:mailcatcher"
       - "redis:redis"
+    ports:
+      - "3001:3001"
+
+  node-front:
+    depends_on:
+      - node-back
+    container_name: ebay-notifier-node-front
+    build:
+       context: ./web
+    image: ebay-notifier-web:1.0
+    volumes:
+      - "./web:/var/www/web"
     ports:
       - "3000:3000"
