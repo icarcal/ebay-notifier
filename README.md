@@ -11,7 +11,16 @@ To run this project, clone and run the docker-compose command:
 ```
 git clone https://github.com/icarcal/ebay-notifier
 cd ebay-notifier
-docker-compose
+cp app/.env.example app/.env
+
+************************************
+ADD YOUR OWN EBAY KEYS TO THE ENV
+EBAY_APP_KEY=key
+EBAY_DEV_KEY=key
+EBAY_CERT_KEY=key
+************************************
+
+docker-compose -d --build
 ```
 
 After that, the API will be available at [http://localhost:3001](http://localhost:3001) and the web interface will be available at [http://localhost:3000](http://localhost:3000)
