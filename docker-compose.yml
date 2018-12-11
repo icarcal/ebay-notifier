@@ -5,25 +5,25 @@ services:
     container_name: ebay-notifier-mongodb
     image: mongo:latest
     volumes:
-      - ./docker-config/database:/data/db
+      - ./docker-config/database:/data/db:cached
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: secret
     ports:
-      - "27017:27017"
+      - 27017:27017
 
   mailcatcher:
     container_name: ebay-notifier-mailcatcher
     image: schickling/mailcatcher
     ports:
-      - "1080:1080"
-      - "1025:1025"
+      - 1080:1080
+      - 1025:1025
 
   redis:
     container_name: ebay-notifier-redis
     image: redis:latest
     ports:
-      - "6379:6379"
+      - 6379:6379
 
   node-back:
     depends_on:
@@ -35,13 +35,13 @@ services:
        context: ./app
     image: ebay-notifier-node:1.0
     volumes:
-      - "./app:/var/www/app"
+      - ./app:/var/www/app:cached
     links:
-      - "mongodb:mongodb"
-      - "mailcatcher:mailcatcher"
-      - "redis:redis"
+      - mongodb:mongodb
+      - mailcatcher:mailcatcher
+      - redis:redis
     ports:
-      - "3001:3001"
+      - 3001:3001
 
   node-front:
     depends_on:
@@ -51,6 +51,6 @@ services:
        context: ./web
     image: ebay-notifier-web:1.0
     volumes:
-      - "./web:/var/www/web"
+      - ./web:/var/www/web:cached
     ports:
-      - "3000:3000"
+      - 3000:3000

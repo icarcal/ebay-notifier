@@ -5,6 +5,6 @@ LABEL version="1.0"
 
 WORKDIR /var/www/web
 
-EXPOSE 3001
+EXPOSE 3000
 
 CMD [ "./build-web.sh" ]
